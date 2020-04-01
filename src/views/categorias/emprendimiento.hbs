@@ -1,0 +1,89 @@
+<div class="row">
+
+   <div class="col-lg-2">
+
+      <img src="/img/icono.png" alt="" width="100" height="100" style="display:block;
+margin:auto;">
+      <div id="list-example" class="list-group">
+         <a class="list-group-item list-group-item-action" href="/categorias/emprendimiento">Emprendimiento</a>
+         <a class="list-group-item list-group-item-action" href="/categorias/administracion">Administración</a>
+         <a class="list-group-item list-group-item-action" href="/categorias/superacionPersonal">Superacion Personal</a>
+         <a class="list-group-item list-group-item-action" href="#list-item-4">Otros</a>
+      </div>
+
+   </div>
+   <!-- /.col-lg-2 -->
+
+   <div class="col-lg-8">
+      <!-- Jumbotron crea la caja blanca-->
+      <div class="jumbotron p-4">
+         <!-- titulo -->
+         <h2 style="text-align: center;">Libros de Emprendimiento</h2>
+         <!-- linea-->
+         <hr class="my-3">
+         <div class="row">
+            {{#each libros}}
+            <div class="col-lg-4 col-md-6 mb-4">
+               <!-- Aqui va el foreach!!!!!!!!!!!!!!!!!!!!!!! -->
+               <div class="card h-100">
+                  <a href="/productos/producto/{{_id}}"><img class="card-img-top" src="{{imageURL}}" alt=""></a>
+                  <div class="card-body">
+                     <h4 class="card-title">
+                        <a href="/productos/producto/{{_id}}">{{nombre}}</a>
+                     </h4>
+                     <h5>${{precio}}</h5>
+                     <p class="card-text">{{descripcionCorta}}</p>
+                  </div>
+                  <div class="card-footer">
+                     <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                  </div>
+               </div>
+            </div>
+            {{/each}}
+
+            <div class="col-lg-4 col-md-6 mb-4">
+               <div class="card h-100">
+                  <a href="#"><img class="card-img-top"
+                        src="https://images-na.ssl-images-amazon.com/images/I/51vo9TTrh1L._SX353_BO1,204,203,200_.jpg"
+                        alt=""></a>
+                  <div class="card-body">
+                     <h4 class="card-title">
+                        <a href="#">Item Six</a>
+                     </h4>
+                     <h5>$24.99</h5>
+                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam
+                        aspernatur!</p>
+                  </div>
+                  <div class="card-footer">
+                     <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                  </div>
+               </div>
+            </div>
+
+         </div>
+         <!-- /.row -->
+
+      </div>
+      <!-- /.jumbotron -->
+
+   </div>
+   <!-- /.col-lg-8 -->
+
+   <div class="col-lg-2">
+
+      <p class="lead">Recomendaciones</p>
+      {{#each libros}}
+      <div class="card" style="width: 12rem;">
+         <img src="{{imageURL}}" class="card-img-top" alt="...">
+         <div class="card-body">
+            <h5 class="card-title">{{nombre}}</h5>
+            <p class="card-text">{{descripcionCorta}}</p>
+            <a href="#" class="btn btn-primary btn-block" >Ver mas</a>
+         </div>
+      </div>
+      {{/each}}
+   </div>
+   <!-- /.col-lg-2 -->
+
+</div>
+<!-- /.row -->
