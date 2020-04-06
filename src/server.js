@@ -28,7 +28,7 @@ const hbs = exphbs.create({ //  express handle se separa en dos conceptos,(parti
    partialsDir: path.join(app.get('views') , 'partials'), //express sabe que partials esta aqui
    extname: '.hbs', //aqui le digo que nombre de extension que utilizo en esas carpetas es .hbs
 
-   //creamos heleprs para ifs
+   //creamos heleprs para ifs, ya que hbs solo soporta si es true o false de un valor
    helpers:{
       ifCond: function (v1, operator, v2, options){
          switch (operator) {

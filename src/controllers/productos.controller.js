@@ -3,7 +3,8 @@ const Producto = require('../models/Producto');
 const Orden = require('../models/Orden');
 const cloudinary = require('cloudinary');
 const fs = require('fs-extra'); // este modulo  trabaja con los archivos , podemos buscar y eliminar archivos
-const stripe = require('stripe')('sk_test_hZKyU4q1oGIwAikyu1Se2WX800CGpOMimr'); //stripe
+const {CLAVESTRIPE} = process.env;
+const stripe = require('stripe')(CLAVESTRIPE); //stripe
 
 productsCtrl.renderProductForm = (req,res) =>{
    res.render('productos/new-product');
@@ -14,15 +15,14 @@ productsCtrl.createNewProduct = async (req,res) =>{
    const result = await cloudinary.v2.uploader.upload(req.file.path); // con esto mandamos la imagen almacenada temp de nuestro dicrectorio a claudinary y lo guardamos en una constante
 
    const newProducto = new Producto({nombre, descripcion,descripcionCorta,autor,stock,precio,categoria});
-   newProducto.user = req.user.id; // CON ESTO YA LE ASIGNAMOS AL USUARIO LA NOTA++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   newProducto.user = req.user.id; 
 
 //          -----------------------Code Claudinary------------------------------
    newProducto.imageURL = result.url; // Guardamos la propiedad url al objeto
    newProducto.public_id = result.public_id; // Guardamos la propiedad public_id al objeto
-   await newProducto.save(); // esto no es de claudinary!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
    await fs.unlink(req.file.path); // elimina el archivo ya que como ya lo subimos a laudinary no es necesario almacenarlo en nuestro servidor
 //          -----------------------EndCode Claudi ------------------------------
-
+   await newProducto.save(); 
    req.flash('success_msg','Libro agregado');         
    res.redirect('/productos');
 };

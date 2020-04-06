@@ -46,7 +46,7 @@ const { isAuthenticated } = require('../helpers/validaRutas');
 router.get('/productos/add', isAuthenticated, renderProductForm);
 router.post('/productos/new-product', isAuthenticated, upload,createNewProduct);
 
-//Obtener Todas las rutas
+//Obtener Todas los productos
 router.get('/productos', isAuthenticated,renderProductos);
 
 //editar Productos
